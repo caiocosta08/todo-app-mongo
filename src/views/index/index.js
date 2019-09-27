@@ -5,12 +5,15 @@ import {connect} from 'react-redux';
 
 import * as loadActions from '../../actions/index';
 
-const Index = ({statuses/*, modalCreateVisible, modalUpdateVisible*/}) => { 
+const Index = ({statuses}) => { 
   
   return (
     
   useEffect( async () => {
-
+    let response = await fetch(process.env.API_URL + 'auth/list')
+        .then(response => response.json())
+        .catch(error => error);
+    console.log(response);
   }, []),
 
   <div>
@@ -19,9 +22,6 @@ const Index = ({statuses/*, modalCreateVisible, modalUpdateVisible*/}) => {
           <div>
             <Button onClick={ () => { 
             
-              console.log('state: ' + modalCreateVisible)
-              setModalCreateVisible(!modalCreateVisible);
-
             }
             }>Add New Status</Button>
           </div>
@@ -50,7 +50,7 @@ const Index = ({statuses/*, modalCreateVisible, modalUpdateVisible*/}) => {
     </Button>
   </td>
   
-  <td><Button variant="danger" onClick={() => console.log('clicou') /*dataScopes.remove({id: item.id})*/}>Delete</Button></td>
+  <td><Button variant="danger" onClick={() => console.log('clicou')}>Delete</Button></td>
 </tr>
 ))} 
 </tbody>
