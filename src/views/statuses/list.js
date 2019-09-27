@@ -14,12 +14,6 @@ import * as dataUsers from '../../controllers/users';
 
 import * as loadActions from '../../actions/index';
 
-const faker = require('faker');
-
-
-
-
-
 const StatusesList = ({statuses/*, modalCreateVisible, modalUpdateVisible*/}) => { 
   
   
@@ -28,29 +22,15 @@ const StatusesList = ({statuses/*, modalCreateVisible, modalUpdateVisible*/}) =>
   
   return (
     
-    
-
   useEffect( async () => {
-
-    let res = await fetch('https://nodejs-expressjs-todo-server.herokuapp.com/auth/list')
-    .then(response => response.json())
-    .then(responseJSON => {
-      return responseJSON;
-    })
-
-    console.log(res)
 
     console.log('INITIAL MODAL CREATE VISIBLE: ' + modalCreateVisible);
     console.log('INITIAL MODAL UPDATE VISIBLE: ' + modalUpdateVisible);
 
   }, []),
 
-  
-
-
   <div>
 
-    
         <ModalCreateStatus
           show={/*modalCreateVisible*/ false}
           onHide={() => {
