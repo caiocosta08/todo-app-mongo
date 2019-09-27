@@ -4,6 +4,7 @@ import CategoriesList from './views/categories/list';
 import StatusesList from './views/statuses/list';
 import ScopesList from './views/scopes/list';
 import TasksList from './views/tasks/list';
+import Index from './views/index/index';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -36,6 +37,9 @@ const Main = ({getAllData}) => (
           <li>
             <Link to="/tasks/list">Tasks List</Link>
           </li>
+          <li>
+            <Link to="/index">Index</Link>
+          </li>
         </ul>
 
         <hr />
@@ -45,6 +49,7 @@ const Main = ({getAllData}) => (
         <Route path="/statuses/list" component={StatusesList} />
         <Route path="/scopes/list" component={ScopesList} />
         <Route path="/tasks/list" component={TasksList} />
+        <Route path="/index" component={Index} />
       </div>
     </Router>
 
