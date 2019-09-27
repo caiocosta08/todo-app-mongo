@@ -1,12 +1,11 @@
 import React from 'react';
 import {Modal, Button, Form} from 'react-bootstrap';
-const UsersController = require('../../../../controllers/usersController')
+const CategoriesController = require('../../../../controllers/categoriesController')
 
-function ModalCreateUser(props, state) {  
+function ModalCreateCategorie(props, state) {  
     state = {
         name: '',
-        email: '',
-        password: '',
+        description: '',
     };
 
     function redirectSuccess(action){
@@ -19,19 +18,18 @@ function ModalCreateUser(props, state) {
       }
 
     function cleanState(){
-        state.name = '231';
-        state.email = '';
-        state.password = '';
+        state.name = '';
+        state.description = '';
       }
     
       function getStateValues(){
         return state;
       }
       
-  async function createUser(userData){
-    let Users = new UsersController.default();
-    let users = await Users.create(userData);
-    if(users){
+  async function createCategorie(categorieData){
+    let Categories = new CategoriesController.default();
+    let categories = await Categories.create(categorieData);
+    if(categories){
       cleanState();
       redirectSuccess('create');
     }
@@ -47,7 +45,7 @@ function ModalCreateUser(props, state) {
   >
     <Modal.Header closeButton>
       <Modal.Title id="contained-modal-title-vcenter">
-        Create User
+        Create Categorie
       </Modal.Title>
     </Modal.Header>
     <Modal.Body>
@@ -57,22 +55,18 @@ function ModalCreateUser(props, state) {
                 <Form.Label>Name</Form.Label>
                 <Form.Control onChange={(event) => {state.name = event.target.value}} type="text" placeholder="Enter name" />
             </Form.Group>
-            <Form.Group controlId="fieldEmail">
-                <Form.Label>E-mail</Form.Label>
-                <Form.Control onChange={(event) => {state.email = event.target.value}} type="email" placeholder="Enter e-mail" />
-            </Form.Group>
-            <Form.Group controlId="fieldPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control onChange={(event) => {state.password = event.target.value}} type="password" placeholder="Enter password" />
+            <Form.Group controlId="fieldDescription">
+                <Form.Label>Description</Form.Label>
+                <Form.Control onChange={(event) => {state.description = event.target.value}} type="text" placeholder="Enter description" />
             </Form.Group>
         </Form>
     </Modal.Body>
     <Modal.Footer>
       <Button onClick={() => {
           props.onHide();
-          createUser(getStateValues());
+          createCategorie(getStateValues());
           
-          }}>Add User</Button>
+          }}>Add Categorie</Button>
           <Button onClick={() => {
               props.onHide();
               }}>Close</Button>
@@ -80,5 +74,5 @@ function ModalCreateUser(props, state) {
   </Modal>
 );
 }
-export default ModalCreateUser;
+export default ModalCreateCategorie;
 

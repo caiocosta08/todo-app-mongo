@@ -1,9 +1,9 @@
 //import React, {useState} from 'react';
 import {api_url} from '../config/database';
-const controller = '/users';
+const controller = '/tasks';
 
-//class UsersController extends React.Component{
-class UsersController{  /*
+//class TasksController extends React.Component{
+class TasksController{  /*
     constructor(props){
         super(props);
         this.state = {
@@ -14,7 +14,7 @@ class UsersController{  /*
     }*/
 
     getAll = async () => {
-        let url = api_url + '/users';
+        let url = api_url + controller;
         
         return fetch(url)
         .then(response => response.json())
@@ -25,15 +25,20 @@ class UsersController{  /*
           
       };
 
-      create = async (userData) => {
+      create = async (taskData) => {
         let url = api_url + controller + '/new';
 
         return fetch(url, {
             method: "POST",
             body: JSON.stringify({
-                name: userData.name.toUpperCase(),
-                email: userData.email.toUpperCase(),
-                password: userData.password.toUpperCase(),
+                name: taskData.name.toUpperCase(),
+                description: taskData.description.toUpperCase(),
+                user_id: taskData.user_id,
+                scope: taskData.scope,
+                date_todo: taskData.date_todo,
+                categorie_id: taskData.categorie_id,
+                status_id: taskData.status_id,
+                date_finish: taskData.date_finish,
             }),
             headers: {"Content-Type": "application/json"}
         })
@@ -45,16 +50,21 @@ class UsersController{  /*
           
       };
 
-      update = async (userData) => {
+      update = async (taskData) => {
         let url = api_url + controller + '/update';
 
         return fetch(url, {
             method: "POST",
             body: JSON.stringify({
-                id: userData.id,
-                name: userData.name.toUpperCase(),
-                email: userData.email.toUpperCase(),
-                password: userData.password.toUpperCase(),
+                id: taskData.id,
+                name: taskData.name.toUpperCase(),
+                description: taskData.description.toUpperCase(),
+                user_id: taskData.user_id,
+                scope: taskData.scope,
+                date_todo: taskData.date_todo,
+                categorie_id: taskData.categorie_id,
+                status_id: taskData.status_id,
+                date_finish: taskData.date_finish,
             }),
             headers: {"Content-Type": "application/json"}
         })
@@ -65,13 +75,14 @@ class UsersController{  /*
           .catch(error => {return error;})
       };
 
-      delete = async (userData) => {
+      delete = async (taskData) => {
         let url = api_url + controller + '/delete';
 
         return fetch(url, {
             method: 'POST',
             body: JSON.stringify({
-                id: userData.id
+                id: taskData.id,
+                //user_id: taskData.user_id,
             }),
             headers: {"Content-Type": "application/json"}
         })
@@ -84,4 +95,4 @@ class UsersController{  /*
 
 }
 
-export default UsersController;
+export default TasksController;

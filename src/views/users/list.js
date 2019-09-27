@@ -65,7 +65,7 @@ class UsersList extends React.Component {
 
   async createUser(userData){
     let Users = new UsersController.default();
-    let users = await Users.createUser(userData);
+    let users = await Users.create(userData);
     if(users){
       this.cleanState();
       this.redirectSuccess('create');
@@ -76,7 +76,7 @@ class UsersList extends React.Component {
 
   async updateUser(userData){
     let Users = new UsersController.default();
-    let users = await Users.updateUser(userData);
+    let users = await Users.update(userData);
     if(users){
       this.cleanState();
       this.redirectSuccess('update');
@@ -87,7 +87,7 @@ class UsersList extends React.Component {
   
   async deleteUser(userData){
     let Users = new UsersController.default();
-    let users = await Users.deleteUser(userData);
+    let users = await Users.delete(userData);
     if(users){
       this.cleanState();
       this.redirectSuccess('delete');

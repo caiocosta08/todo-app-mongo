@@ -50,7 +50,7 @@ function ModalUpdateUser(props, state) {
   async function updateUser(userData){
 
     let Users = new UsersController.default();
-    let users = await Users.updateUser(userData);
+    let users = await Users.update(userData);
     if(users){
         cleanState();
         redirectSuccess('update');

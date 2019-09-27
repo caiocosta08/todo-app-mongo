@@ -1,9 +1,9 @@
 //import React, {useState} from 'react';
 import {api_url} from '../config/database';
-const controller = '/users';
+const controller = '/statuses';
 
-//class UsersController extends React.Component{
-class UsersController{  /*
+//class StatusesController extends React.Component{
+class StatusesController{  /*
     constructor(props){
         super(props);
         this.state = {
@@ -14,7 +14,7 @@ class UsersController{  /*
     }*/
 
     getAll = async () => {
-        let url = api_url + '/users';
+        let url = api_url + controller;
         
         return fetch(url)
         .then(response => response.json())
@@ -25,15 +25,14 @@ class UsersController{  /*
           
       };
 
-      create = async (userData) => {
+      create = async (statusData) => {
         let url = api_url + controller + '/new';
 
         return fetch(url, {
             method: "POST",
             body: JSON.stringify({
-                name: userData.name.toUpperCase(),
-                email: userData.email.toUpperCase(),
-                password: userData.password.toUpperCase(),
+                name: statusData.name.toUpperCase(),
+                description: statusData.description.toUpperCase(),
             }),
             headers: {"Content-Type": "application/json"}
         })
@@ -45,16 +44,15 @@ class UsersController{  /*
           
       };
 
-      update = async (userData) => {
+      update = async (statusData) => {
         let url = api_url + controller + '/update';
 
         return fetch(url, {
             method: "POST",
             body: JSON.stringify({
-                id: userData.id,
-                name: userData.name.toUpperCase(),
-                email: userData.email.toUpperCase(),
-                password: userData.password.toUpperCase(),
+                id: statusData.id,
+                name: statusData.name.toUpperCase(),
+                description: statusData.description.toUpperCase(),
             }),
             headers: {"Content-Type": "application/json"}
         })
@@ -65,13 +63,13 @@ class UsersController{  /*
           .catch(error => {return error;})
       };
 
-      delete = async (userData) => {
+      delete = async (statusData) => {
         let url = api_url + controller + '/delete';
 
         return fetch(url, {
             method: 'POST',
             body: JSON.stringify({
-                id: userData.id
+                id: statusData.id
             }),
             headers: {"Content-Type": "application/json"}
         })
@@ -84,4 +82,4 @@ class UsersController{  /*
 
 }
 
-export default UsersController;
+export default StatusesController;

@@ -1,9 +1,9 @@
 //import React, {useState} from 'react';
 import {api_url} from '../config/database';
-const controller = '/users';
+const controller = '/scopes';
 
-//class UsersController extends React.Component{
-class UsersController{  /*
+//class ScopesController extends React.Component{
+class ScopesController{  /*
     constructor(props){
         super(props);
         this.state = {
@@ -14,7 +14,7 @@ class UsersController{  /*
     }*/
 
     getAll = async () => {
-        let url = api_url + '/users';
+        let url = api_url + controller;
         
         return fetch(url)
         .then(response => response.json())
@@ -25,15 +25,14 @@ class UsersController{  /*
           
       };
 
-      create = async (userData) => {
+      create = async (scopeData) => {
         let url = api_url + controller + '/new';
 
         return fetch(url, {
             method: "POST",
             body: JSON.stringify({
-                name: userData.name.toUpperCase(),
-                email: userData.email.toUpperCase(),
-                password: userData.password.toUpperCase(),
+                name: scopeData.name.toUpperCase(),
+                description: scopeData.description.toUpperCase(),
             }),
             headers: {"Content-Type": "application/json"}
         })
@@ -45,16 +44,15 @@ class UsersController{  /*
           
       };
 
-      update = async (userData) => {
+      update = async (scopeData) => {
         let url = api_url + controller + '/update';
 
         return fetch(url, {
             method: "POST",
             body: JSON.stringify({
-                id: userData.id,
-                name: userData.name.toUpperCase(),
-                email: userData.email.toUpperCase(),
-                password: userData.password.toUpperCase(),
+                id: scopeData.id,
+                name: scopeData.name.toUpperCase(),
+                description: scopeData.description.toUpperCase(),
             }),
             headers: {"Content-Type": "application/json"}
         })
@@ -65,13 +63,13 @@ class UsersController{  /*
           .catch(error => {return error;})
       };
 
-      delete = async (userData) => {
+      delete = async (scopeData) => {
         let url = api_url + controller + '/delete';
 
         return fetch(url, {
             method: 'POST',
             body: JSON.stringify({
-                id: userData.id
+                id: scopeData.id
             }),
             headers: {"Content-Type": "application/json"}
         })
@@ -84,4 +82,4 @@ class UsersController{  /*
 
 }
 
-export default UsersController;
+export default ScopesController;
