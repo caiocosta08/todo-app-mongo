@@ -5,7 +5,7 @@ const controller = '/categories';
 
 
     const getAll = async () => {
-        let url = api_url + controller;
+        let url = api_url + controller + '/list';
         
         return fetch(url)
         .then(response => response.json())

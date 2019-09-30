@@ -1,11 +1,11 @@
 //import React, {useState} from 'react';
 import {api_url} from '../config/database';
-const controller = '/users';
+const controller = '/auth';
 
 
 
 const getAll = async () => {
-    let url = api_url + controller;
+    let url = api_url + controller + '/list';
     
     return fetch(url)
     .then(response => response.json())

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Button, Table } from 'react-bootstrap';
 
-const UsersController = require('../../controllers/usersController')
+const UsersController = require('../../controllers/users')
   
 
 class UsersList extends React.Component {
