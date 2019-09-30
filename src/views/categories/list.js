@@ -1,6 +1,4 @@
 import React, { useEffect} from 'react';
-import {api_url} from '../../config/database';
-import { Button, Table } from 'react-bootstrap';
 
 import {connect} from 'react-redux';
 
@@ -37,6 +35,7 @@ const CategoriesList = ({categories, categoryActive, toggleCategory, setAllData}
     };
     getData();
 
+  // eslint-disable-next-line no-sequences
   }, [setAllData]),
 
   <div>
