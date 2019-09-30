@@ -1,14 +1,12 @@
 import React from 'react';
 
 import { Button, Table } from 'react-bootstrap';
-import ModalCreateTask from './components/modals/modalCreateTask';
-import ModalUpdateTask from './components/modals/modalUpdateTask';
 
-const TasksController = require('../../controllers/tasksController')
-const ScopesController = require('../../controllers/scopesController')
-const CategoriesController = require('../../controllers/categoriesController')
-const StatusesController = require('../../controllers/statusesController')
-const UsersController = require('../../controllers/usersController')
+const TasksController = require('../../controllers/tasks')
+const ScopesController = require('../../controllers/scopes')
+const CategoriesController = require('../../controllers/categories')
+const StatusesController = require('../../controllers/statuses')
+const UsersController = require('../../controllers/users')
   
 
 class TasksList extends React.Component {
@@ -25,8 +23,6 @@ class TasksList extends React.Component {
     users: [],
     loadingTasks: true,
     loadingData: true,
-    modalCreateTaskVisible: false,
-    modalUpdateTaskVisible: false,
   };
 
   constructor(props) {
@@ -40,10 +36,6 @@ class TasksList extends React.Component {
     this.redirectSuccess = this.redirectSuccess.bind(this);
     this.refreshPage = this.refreshPage.bind(this);
 
-    //modal functions
-    this.modalCreatTaskToggle = this.modalCreateTaskToggle.bind(this);
-    this.modalUpdateTaskToggle = this.modalUpdateTaskToggle.bind(this);
-    
     //controller functions
     this.getAllTasks = this.getAllTasks.bind(this); 
     this.createTask = this.createTask.bind(this);
@@ -174,18 +166,7 @@ class TasksList extends React.Component {
       return (
         
         <div>
-        <ModalCreateTask
-          show={this.state.modalCreateTaskVisible}
-          onHide={() => this.setState({modalCreateTaskVisible: false})}
-          data={this.getStateValues()}
-          //onHide={() => this.modalCreateTaskToggle(this.state.modalCreateTaskVisible)}
-        />
-        <ModalUpdateTask
-          show={this.state.modalUpdateTaskVisible}
-          onHide={() => this.setState({modalUpdateTaskVisible: false})}
-          taskdata={this.getStateValues()}
-          //onHide={() => this.modalCreateTaskToggle(this.state.modalCreateTaskVisible)}
-        />
+
           <div>
             <h1>Tasks list</h1>
             <Button onClick={() => {

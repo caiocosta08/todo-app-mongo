@@ -1,8 +1,6 @@
 import React, { useEffect, useState} from 'react';
 import {api_url} from '../../config/database';
 import { Button, Table } from 'react-bootstrap';
-import ModalCreateStatus from './components/modals/modalCreateStatus';
-import ModalUpdateStatus from './components/modals/modalUpdateStatus';
 
 import {connect} from 'react-redux';
 
@@ -14,40 +12,18 @@ import * as dataUsers from '../../controllers/users';
 
 import * as loadActions from '../../actions/index';
 
-const StatusesList = ({statuses/*, modalCreateVisible, modalUpdateVisible*/}) => { 
-  
-  
-  const [modalCreateVisible, setModalCreateVisible] = useState(false);
-  const [modalUpdateVisible, setModalUpdateVisible] = useState(false);
+const StatusesList = ({statuses}) => { 
   
   return (
     
   useEffect( async () => {
-
-    console.log('INITIAL MODAL CREATE VISIBLE: ' + modalCreateVisible);
-    console.log('INITIAL MODAL UPDATE VISIBLE: ' + modalUpdateVisible);
-
   }, []),
 
   <div>
-
-        <ModalCreateStatus
-          show={/*modalCreateVisible*/ false}
-          onHide={() => {
-            console.log('state: ' + modalCreateVisible)
-            //setModalCreateVisible(false)
-          }}
-        />
     <h1>Statuses</h1>
 
           <div>
-            <Button onClick={ () => { 
-            
-              console.log('state: ' + modalCreateVisible)
-              setModalCreateVisible(!modalCreateVisible);
-
-            }
-            }>Add New Status</Button>
+            <Button>Add New Status</Button>
           </div>
             <br />  
             <br />

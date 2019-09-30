@@ -73,7 +73,6 @@ const getAll = async () => {
     .catch(error => {return error;})
   };
 
-      
 export {
         getAll, create, update, remove
 }

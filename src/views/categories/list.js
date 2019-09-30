@@ -1,8 +1,6 @@
 import React, { useEffect} from 'react';
 import {api_url} from '../../config/database';
 import { Button, Table } from 'react-bootstrap';
-import ModalCreateCategorie from './components/modals/modalCreateCategorie';
-import ModalUpdateCategorie from './components/modals/modalUpdateCategorie';
 
 import {connect} from 'react-redux';
 
@@ -39,7 +37,7 @@ const CategoriesList = ({categories, categoryActive, toggleCategory, setAllData}
     };
     getData();
 
-  }, []),
+  }, [setAllData]),
 
   <div>
     <h3>Categoria ativa: {categoryActive}</h3>

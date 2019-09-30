@@ -1,8 +1,6 @@
 import React from 'react';
 
 import { Button, Table } from 'react-bootstrap';
-import ModalCreateUser from './components/modals/modalCreateUser';
-import ModalUpdateUser from './components/modals/modalUpdateUser';
 
 const UsersController = require('../../controllers/usersController')
   
@@ -17,8 +15,6 @@ class UsersList extends React.Component {
     password: '',
     users: [],
     loadingUsers: true,
-    modalCreateUserVisible: false,
-    modalUpdateUserVisible: false,
   };
 
   constructor(props) {
@@ -32,10 +28,6 @@ class UsersList extends React.Component {
     this.redirectSuccess = this.redirectSuccess.bind(this);
     this.refreshPage = this.refreshPage.bind(this);
 
-    //modal functions
-    this.modalCreateUserToggle = this.modalCreateUserToggle.bind(this);
-    this.modalUpdateUserToggle = this.modalUpdateUserToggle.bind(this);
-    
     //controller functions
     this.getAllUsers = this.getAllUsers.bind(this); 
     this.createUser = this.createUser.bind(this);
@@ -114,15 +106,7 @@ class UsersList extends React.Component {
   getStateValues(){
     return this.state;
   }
-
-  modalCreateUserToggle(toggle){
-    this.setState({modalCreateUserVisible: !toggle})
-  }
-  modalUpdateUserToggle(toggle){
-    this.setState({modalUpdateUserVisible: !toggle})
-  }
   
-
   static async getDerivedStateFromProps(props, state){
     
   }
@@ -142,17 +126,6 @@ class UsersList extends React.Component {
       return (
         
         <div>
-        <ModalCreateUser
-          show={this.state.modalCreateUserVisible}
-          onHide={() => this.setState({modalCreateUserVisible: false})}
-          //onHide={() => this.modalCreateUserToggle(this.state.modalCreateUserVisible)}
-        />
-        <ModalUpdateUser
-          show={this.state.modalUpdateUserVisible}
-          onHide={() => this.setState({modalUpdateUserVisible: false})}
-          userdata={this.getStateValues()}
-          //onHide={() => this.modalCreateUserToggle(this.state.modalCreateUserVisible)}
-        />
           <div>
             <h1>Users list</h1>
             <Button onClick={() => {

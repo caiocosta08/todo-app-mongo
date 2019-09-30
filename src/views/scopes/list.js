@@ -1,8 +1,6 @@
 import React, { useEffect} from 'react';
 import {api_url} from '../../config/database';
 import { Button, Table } from 'react-bootstrap';
-import ModalCreateScope from './components/modals/modalCreateScope';
-import ModalUpdateScope from './components/modals/modalUpdateScope';
 
 import {connect} from 'react-redux';
 
@@ -21,7 +19,7 @@ const CategoriesList = ({scopes, getAllData}) => (
 
     getAllData();
 
-  }, []),
+  }, [getAllData]),
 
   <div>
     <h1>Scopes</h1>
