@@ -17,7 +17,7 @@ const controller = '/categories';
       };
 
       const create = async (categoryData) => {
-        let url = api_url + controller + '/new';
+        let url = api_url + controller + '/register';
 
         return fetch(url, {
             method: "POST",

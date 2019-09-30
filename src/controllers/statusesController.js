@@ -26,7 +26,7 @@ class StatusesController{  /*
       };
 
       create = async (statusData) => {
-        let url = api_url + controller + '/new';
+        let url = api_url + controller + '/register';
 
         return fetch(url, {
             method: "POST",

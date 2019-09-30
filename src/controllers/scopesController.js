@@ -26,7 +26,7 @@ class ScopesController{  /*
       };
 
       create = async (scopeData) => {
-        let url = api_url + controller + '/new';
+        let url = api_url + controller + '/register';
 
         return fetch(url, {
             method: "POST",

@@ -17,7 +17,7 @@ const getAll = async () => {
   };
 
   const create = async (taskData) => {
-    let url = api_url + controller + '/new';
+    let url = api_url + controller + '/register';
 
     return fetch(url, {
         method: "POST",
@@ -25,11 +25,11 @@ const getAll = async () => {
             name: taskData.name.toUpperCase(),
             description: taskData.description.toUpperCase(),
             user_id: taskData.user_id,
-            scope: taskData.scope,
+            scope_id: taskData.scope_id,
             date_todo: taskData.date_todo,
-            categorie_id: taskData.categorie_id,
+            category_id: taskData.category_id,
             status_id: taskData.status_id,
-            date_finish: taskData.date_finish,
+            //date_finish: taskData.date_finish,
         }),
         headers: {"Content-Type": "application/json"}
     })
@@ -51,11 +51,11 @@ const getAll = async () => {
             name: taskData.name.toUpperCase(),
             description: taskData.description.toUpperCase(),
             user_id: taskData.user_id,
-            scope: taskData.scope,
+            scope_id: taskData.scope_id,
             date_todo: taskData.date_todo,
             categorie_id: taskData.categorie_id,
             status_id: taskData.status_id,
-            date_finish: taskData.date_finish,
+            //date_finish: taskData.date_finish,
         }),
         headers: {"Content-Type": "application/json"}
     })
