@@ -52,14 +52,10 @@ class TasksList extends React.Component {
 
   async getData(){
     
-    let Scopes = new ScopesController.default();
-    let scopes = await Scopes.getAll();
-    let Categories = new CategoriesController.default();
-    let categories = await Categories.getAll();
-    let Users = new UsersController.default();
-    let users = await Users.getAll();
-    let Statuses = new StatusesController.default();
-    let statuses = await Statuses.getAll();
+    let scopes = await ScopesController.getAll();
+    let categories = await CategoriesController.getAll();
+    let users = await UsersController.getAll();
+    let statuses = await StatusesController.getAll();
     if(scopes && categories && users && statuses){
       this.setState({
         loadingData: false,
@@ -73,8 +69,7 @@ class TasksList extends React.Component {
   }
 
   async getAllTasks(){
-    let Tasks = new TasksController.default();
-    let tasks = await Tasks.getAll();
+    let tasks = await TasksController.getAll();
     if(tasks){
       this.setState({
         loadingTasks: false,
@@ -89,8 +84,7 @@ class TasksList extends React.Component {
   }
 
   async createTask(taskData){
-    let Tasks = new TasksController.default();
-    let tasks = await Tasks.create(taskData);
+    let tasks = await TasksController.create(taskData);
     if(tasks){
       this.cleanState();
       this.redirectSuccess('create');
@@ -100,8 +94,7 @@ class TasksList extends React.Component {
   }
 
   async updateTask(taskData){
-    let Tasks = new TasksController.default();
-    let tasks = await Tasks.update(taskData);
+    let tasks = await TasksController.update(taskData);
     if(tasks){
       this.cleanState();
       this.redirectSuccess('update');
@@ -111,8 +104,7 @@ class TasksList extends React.Component {
   }
   
   async deleteTask(taskData){
-    let Tasks = new TasksController.default();
-    let tasks = await Tasks.delete(taskData);
+    let tasks = await TasksController.delete(taskData);
     if(tasks){
       this.cleanState();
       this.redirectSuccess('delete');

@@ -39,8 +39,7 @@ class UsersList extends React.Component {
   }
 
   async getAllUsers(){
-    let Users = new UsersController.default();
-    let users = await Users.getAll();
+    let users = await UsersController.getAll();
     if(users){
       this.setState({
         loadingUsers: false,
@@ -56,8 +55,8 @@ class UsersList extends React.Component {
   }
 
   async createUser(userData){
-    let Users = new UsersController.default();
-    let users = await Users.create(userData);
+    
+    let users = await UsersController.create(userData);
     if(users){
       this.cleanState();
       this.redirectSuccess('create');
@@ -67,8 +66,7 @@ class UsersList extends React.Component {
   }
 
   async updateUser(userData){
-    let Users = new UsersController.default();
-    let users = await Users.update(userData);
+    let users = await UsersController.update(userData);
     if(users){
       this.cleanState();
       this.redirectSuccess('update');
@@ -78,8 +76,7 @@ class UsersList extends React.Component {
   }
   
   async deleteUser(userData){
-    let Users = new UsersController.default();
-    let users = await Users.delete(userData);
+    let users = await UsersController.delete(userData);
     if(users){
       this.cleanState();
       this.redirectSuccess('delete');
