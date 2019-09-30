@@ -4,26 +4,37 @@ import { Button, Table } from 'react-bootstrap';
 import {connect} from 'react-redux';
 
 import * as loadActions from '../../actions/index';
+import { api_url } from '../../config/database';
 
-const Index = ({statuses}) => { 
+
+const Index = ({}) => { 
   
   return (
     
-  useEffect( async () => {
-    let response = await fetch(process.env.API_URL + 'auth/list')
-        .then(response => response.json())
-        .catch(error => error);
-    console.log(response);
+  useEffect( () => {
+    async function fetchData(){
+        let url = api_url + '/auth/list';
+        console.log(url)
+        let response = await fetch(url)
+            .then(response => response.json())
+            .then(responseJSON => console.log(responseJSON))
+            .catch(error => console.log(error));
+        return await response;
+    }
+
+    fetchData();
+
+    //console.log(data);
   }, []),
 
   <div>
-    <h1>Statuses</h1>
+    <h1>Index</h1>
 
           <div>
             <Button onClick={ () => { 
             
             }
-            }>Add New Status</Button>
+            }>Click Me</Button>
           </div>
             <br />  
             <br />
@@ -38,21 +49,7 @@ const Index = ({statuses}) => {
   </tr>
 </thead>
 <tbody>
-{statuses.map(item => (
-<tr key={item.id}>
-  <td>{item.id}</td>
-  <td>{item.name}</td>
-  <td>{item.description}</td>
-  <td>
-    <Button variant="primary" onClick={() => { console.log('clicou no botão edit com infos: ' + item.id +' - '+ item.name + ' - ' + item.description)
-    } }>
-      Edit
-    </Button>
-  </td>
-  
-  <td><Button variant="danger" onClick={() => console.log('clicou')}>Delete</Button></td>
-</tr>
-))} 
+    
 </tbody>
 </Table>
     
@@ -65,7 +62,7 @@ const Index = ({statuses}) => {
 
 const mapStateToProps = state => ({
     
-    statuses: state.loadState.statuses,
+    //statuses: state.loadState.statuses,
 
 });
 
