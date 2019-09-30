@@ -1,5 +1,5 @@
 ## To Do App
-To Do App developed with ReactJS, getting data in an NodeJS server using ExpressJS
+To Do App with MongoDB developed with ReactJS, getting data in an NodeJS server using ExpressJS
 
 ## Installation
 
